@@ -1,6 +1,6 @@
 # Hollow Knight Route Search
 
-We built this as a group project with Francisco Batista, Lourenço Mourão Martins, and Cícero Dias dos Santos. The genetic algorithm searches for high-scoring routes through Hollow Knight. Fitness is based on Geo changes between areas and the project's route constraints.
+This project uses a genetic algorithm to search for high-scoring routes through Hollow Knight. Fitness is based on Geo changes between areas and the route constraints.
 
 The default run creates a new matrix without a fixed seed, so results can vary.
 
