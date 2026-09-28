@@ -1,109 +1,28 @@
-# Genetic Algorithms for Optimizing In-Game Routing in Hollow Knight
+# Hollow Knight Route Search
 
-This project explores and optimizes the use of Genetic Algorithms (GAs) for solving complex routing problems, specifically aiming to maximize in-game currency (Geo) earnings for a specified set of routes in the game Hollow Knight. The project involves implementing and testing various genetic operators, including different types of crossover and mutation functions, and executing a comprehensive grid search to determine the optimal configurations. The output includes the best route with the highest Geo earnings, a detailed analysis of phenotypic and genotypic diversity across generations, and a dynamic dashboard for visualizing the results. This project showcases the integration of theoretical knowledge, programming skills, and creative problem-solving in the field of optimization algorithms.
+We built this as a group project with Francisco Batista, Lourenço Mourão Martins, and Cícero Dias dos Santos. The genetic algorithm searches for high-scoring routes through Hollow Knight. Fitness is based on Geo changes between areas and the project's route constraints.
 
-## Project Content
+The default run creates a new matrix without a fixed seed, so results can vary.
 
-### Directories and Files
+The default settings use tournament selection, order crossover, swap mutation, elitism, fitness sharing, and a two-opt improvement step. The dashboard shows the route and fitness over the generations.
 
-**Main Directory (`main`)**
-- `__pycache__`
-- `__init__.py`
-- `genetic_algorithm.py`
+## Run
 
-**Operators Directory (`operators`)**
-- `__pycache__`
-- `__init__.py`
-- `crossovers.py`
-- `mutators.py`
-- `optimizations.py`
-- `selection_algorithms.py`
+Install the dependencies and start the program from the repository root:
 
-**Population Directory (`pop`)**
-- `__pycache__`
-- `__init__.py`
-- `population.py`
-
-**Tests Directory (`tests`)**
-- `__pycache__`
-- `__init__.py`
-- `test_crossover.py`
-- `test_mut.py`
-
-**Utilities Directory (`utils`)**
-- `__pycache__`
-- `__init__.py`
-- `utils.py`
-
-**Visualizations Directory (`visualizations`)**
-- `__pycache__`
-- `dashboard.py`
-- `visualization.py`
-
-### Other Files
-- `.gitattributes`
-- `Geo_Matrix_Dataset.csv`
-- `grid_search_results.csv`
-- `gridsearch.py`
-- `main.py`
-- `ReadMe.md`
-- `requirements.txt`
-
-## Instructions
-
-### Install Requirements
 ```bash
-pip install -r requirements.txt
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+python main.py
 ```
 
-### Running the Algorithm
+The run opens a route visualization and starts the dashboard at `http://127.0.0.1:8050`. Stop the dashboard with `Ctrl+C` in the terminal.
 
-1. **Open `main.py`**
-   ```python
-   # Insert your matrix (list of lists) in matrix_to_use
-   # If you want to use one of ours set it to 'None'
-   ```
+To use a saved Geo matrix, load it as a list of lists and pass it as `matrix_to_use` in `main.py`. The project also includes `Geo_Matrix_Dataset.csv`, grid-search results, and the final report.
 
-2. **Execute the Script**
-   ```bash
-   python main.py
-   ```
+## Files
 
-3. **Output Explanation**
-   ```
-   ----------------------------------------
-   Generation 49 best fitness : 3893
-   ----------------------------------------
-   Best individual: ['D', 'G', 'SN', 'FC', 'DV', 'KS', 'QS', 'CS', 'RG', 'QG', 'D']
-   Phenotypic Diversity: 549.32
-   Genotypic Diversity: 7.14
-   ----------------------------------------
-   ```
-
-4. **Visualization**
-   After running the script, a window with an animation of the routes will open.
-   When you close it the Dashboard will initialize!
-
-### Dashboard Initialization
-
-1. **Run the Dashboard**
-   ```bash
-   # The dashboard will be running on http://127.0.0.1:8050
-   ```
-
-2. **Open the Browser**
-   - Paste `http://127.0.0.1:8050` in your browser to explore the dashboard.
-   - Use CTRL + C to stop server hosting (dashboard will stop working)
-
-   ```
-   127.0.0.1 - - [DD/MM/YYYY hh:mm:ss] "POST /_dash-update-component HTTP/1.1" 200 - outputs this everytime tou call the @app.callback
-   ```
-
-## Explore the Dashboard!
-- Visualize the optimization process and results.
-- Analyze phenotypic and genotypic diversity across generations.
-- Interact with dynamic graphs and charts to gain insights into the algorithm's performance.
-
----
-
-This project provides a comprehensive framework for optimizing routing problems using Genetic Algorithms, with a specific focus on maximizing in-game currency earnings in Hollow Knight. The integration of various genetic operators, extensive testing, and dynamic visualizations offers a robust and insightful approach to solving complex optimization problems.
+- `ga/`, `operators/`, `pop/`, and `utils/` contain the genetic algorithm and route-scoring code.
+- `visualizations/` contains the route plots and dashboard.
+- `gridsearch.py` runs parameter searches; `tests/` contains a crossover test.
